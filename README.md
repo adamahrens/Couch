@@ -29,3 +29,17 @@ Utilize MapReduce queries to get the data we need.
 * Multi version concurrency control instead of locking
 * Upload documents vs inserting values (JSON document to CouchDB to replace exisiting document vs insert rows into tables)
 * Need to know how to use the Data vs how the data will look
+
+# Adding a User
+
+* Need to create a _user document
+
+```
+{
+  "_id" : "org.couchdb.user:username,
+  "name" : "username",
+  "password" : "xxxxxx",
+  "roles" = [],
+  "type" = "user
+}
+```
