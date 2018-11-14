@@ -43,3 +43,16 @@ Utilize MapReduce queries to get the data we need.
   "type" = "user
 }
 ```
+
+# REST
+
+`GET` `localhost` with header `Authorization: Basic asd32523`
+
+# Create DB via REST
+`PUT` `localhost:5984/name_of_database`
+
+# Delete DB via REST
+`DELETE` `localhost:5984/name_of_database`
+
+# Get DB via Rest
+`GET` `localhost:5984/name_of_database`
