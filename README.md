@@ -56,3 +56,19 @@ Utilize MapReduce queries to get the data we need.
 
 # Get DB via Rest
 `GET` `localhost:5984/name_of_database`
+
+# Create a Document
+`POST` `localhost:5984/name_of_database` `Body: { "key" : "value }` `Headers: Content-Type: application/json`
+If no `_id` key is provided then CouchDB will create one for you.
+`rev` in the response is required for all future `POST` calls
+
+# Delete a Document
+`DELETE` `localhost:5984/name_of_database/_id?rev=revision_number
+
+# Update a Document
+`PUT` `localhost:5984/name_of_database/_id` `Body: { "key" : "value }` `Headers: Content-Type: application/json`
+
+Could specify `_deleted : true` 
+
+# Fetch a Document
+`GET` `localhost:5984/name_of_database/_id` Add `revs_info=true` query param to show all revisions `status: available` has to do with Databse compaction
