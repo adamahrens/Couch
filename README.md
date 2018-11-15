@@ -72,3 +72,6 @@ Could specify `_deleted : true`
 
 # Fetch a Document
 `GET` `localhost:5984/name_of_database/_id` Add `revs_info=true` query param to show all revisions `status: available` has to do with Databse compaction
+
+# Add a Attachment to a Dcoument
+`PUT` `localhost:5984/name_of_database/_id?rev=rev_id` `Headers : Content-Type: image/jpeg`
