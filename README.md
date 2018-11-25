@@ -75,3 +75,84 @@ Could specify `_deleted : true`
 
 # Add a Attachment to a Dcoument
 `PUT` `localhost:5984/name_of_database/_id?rev=rev_id` `Headers : Content-Type: image/jpeg`
+
+# Database Commands
+`_compact` begins the compaction process.
+
+`_view_cleanup` removes indexes for view that do not exisit
+
+`_revs_limit` GET or PUT the max number of revisions (default = 1000)
+
+`POST` `localhost:5984/name_of_database/_compact` `Headers: Content-Type: application/json`
+
+`POST` `localhost:5984/name_of_database/_view_cleanup` `Headers: Content-Type: application/json`
+
+`GET` `localhost:5984/name_of_database/_revs_limit` `Headers: Content-Type: application/json`
+
+# Fetch All Documents
+`GET` to fetch all documents
+
+`GET` `localhost:5984/name_of_database/_all_docs` `Headers: Content-Type: application/json`
+
+```
+{
+    "total_rows": 1,
+    "offset": 0,
+    "rows": [
+        {
+            "id": "eea3ef21a814dcab8f3f489df800aa5f",
+            "key": "eea3ef21a814dcab8f3f489df800aa5f",
+            "value": {
+                "rev": "2-0fff73b53338b93f39592627a02a8017"
+            }
+        }
+    ]
+}
+```
+
+Additional Query Params
+
+| Query         | Type          | Example  |
+| ------------- |:-------------:| -----:|
+| descending     | boolean | http://localhost:5984/name_of_database/_all_docs?descending=true |
+| include_docs   | boolean | http://localhost:5984/name_of_database/_all_docs?include_docs=true  |
+| limit          | number  | http://localhost:5984/name_of_database/_all_docs?limit=25  |
+| skip           | number  | http://localhost:5984/name_of_database/_all_docs?skip=10  |
+
+`POST` to retrieve a specific group of documents all at once
+
+# Bulk Documents
+
+`POST` to upload multiple new documents at once
+
+`http://localhost:5984/name_of_database/_bulk_docs
+
+```
+{ "docs" : [
+	{ "_id": "sdlkjf;aslkj32523;lkj;lkjadsf",
+	  "name": "First Last",
+	   "address": {
+		"street": "2875 Goodrich",
+		"city": "Saint Paul",
+		"state": "MN"
+		}
+	},
+	{ "_id": "superlkjwlkjva;lskj;lwek",
+	  "name": "Jimmy Last",
+	   "address": {
+		"street": "3112 Goodrich",
+		"city": "Saint Paul",
+		"state": "MN"
+		}
+	},
+	{ "_id": "asdfhgfdjrtyeryeryerydfghfsf",
+	  "name": "First Jimmy",
+	   "address": {
+		"street": "5656 Goodrich",
+		"city": "Saint Paul",
+		"state": "MN"
+		}
+	}
+	]
+}
+``` 
