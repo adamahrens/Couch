@@ -1,4 +1,4 @@
-# Couch
+# CouchDB
 CouchDB stuff for v 2.2.0
 
 # What is Couch
