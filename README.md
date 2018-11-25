@@ -159,3 +159,9 @@ Additional Query Params
 # Changes
 
 `GET` `http://localhost:5984/name_of_database/_changes`
+
+# Security
+
+`GET` To view the current security
+
+`PUT` To replace the current security
