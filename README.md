@@ -162,6 +162,31 @@ Additional Query Params
 
 # Security
 
-`GET` To view the current security
+`GET` To view the current security. `http://localhost:port/name_of_database/_security`
 
 `PUT` To replace the current security
+
+# Design Documents
+
+Utilize MapReduceQuery to return Design Docs
+
+Types
+* Views (Emits Key Value pairs)
+* Show (Displays a single Document)
+* List (Produce list of mutliple Documents )
+* Update (Broad changes across a database, add/change fields)
+* Validation
+
+To see the results of the Design Doc `http://localhost:5984/name_of_database/_design/name_of_design_doc/_view/name_of_view`
+
+# Build Design Documents in Futon
+
+Add with example like
+
+``` 
+function (doc) {
+  if (doc.name.length > 0 && doc.hobbies.length > 0) {
+    emit(doc.name, doc.hobbies[0]);
+  }
+}
+```
