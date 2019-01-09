@@ -190,3 +190,29 @@ function (doc) {
   }
 }
 ```
+
+# Mango
+
+Query language inspired by MongoDB.
+Consists of two parts
+* Indexes
+* Find statements to query
+
+# Anatomy of an Index
+
+* Fields: Array of keys that are to be indexed
+* ddoc: Name of design document to put the index in (will create if doesnt exist)
+
+```
+{"index" : { "fields" : ["key"] }, "ddoc" : "name_of_design_document", "name" : "name_of_index", "type" : "json" }
+```
+
+Using sample above as the Body in the request
+
+`POST` `http://localhost:5984/name_of_database/_index`
+
+Return the list of all indexes
+`GET` `http://localhost:5984/name_of_database/_index`
+
+To Remove an Index
+`DELETE` `http://localhost:5984/name_of_database/_index/ddoc_name/json/name_of_index`
