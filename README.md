@@ -216,3 +216,24 @@ Return the list of all indexes
 
 To Remove an Index
 `DELETE` `http://localhost:5984/name_of_database/_index/ddoc_name/json/name_of_index`
+
+# Anatomy of a Find Query
+
+```
+{
+ "selector" : {
+   "_id": { "$gt" : null }
+ },
+ "fields" : ["_id", "column_name_1", "column_name_2"],
+ "limit" : 5,
+ "sort" : [{"_id" : "desc"}],
+ "use_index" : ["ddoc", "name"]
+}
+```
+* selector the only required part
+* list of fields to return. Full document returned if fields not specified 
+* _id and _rev need to be included
+* limit defaults to 25
+* skip defaults to 0
+* sort values must be included in the fields array, selector, and index being used
+* use_index specifieds the design document and index name to use. CouchDB will guess otherwise
