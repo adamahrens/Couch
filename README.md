@@ -237,3 +237,101 @@ To Remove an Index
 * skip defaults to 0
 * sort values must be included in the fields array, selector, and index being used
 * use_index specifieds the design document and index name to use. CouchDB will guess otherwise
+
+# Examples of selector
+
+`$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$nin`, `$eq`, `$neq`
+
+More selectors can be found at https://docs.couchdb.org/en/2.2.0/api/database/find.html#find-selectors
+`"year" : { "$lt" : 1986 }`
+
+Can use object.propertyName for finds embedded objects
+
+Concrete example
+
+```
+{
+   "selector": {
+      "_id": {
+         "$gt": null
+      },
+      "name": {
+         "$gt": null
+      }
+   },
+   "limit": 5
+}
+```
+
+```
+{
+   "selector": {
+      "_id": {
+         "$gt": null
+      },
+      "name": {
+         "$gt": null
+      },
+      "hours": {
+         "$eq": null
+      }
+   },
+   "fields": [
+      "name",
+      "hours",
+      "city"
+   ],
+   "limit": 5
+}
+```
+
+```
+{
+   "selector": {
+      "attributes.WiFi": {
+         "$ne": "no"
+      }
+   },
+   "limit": 5
+}
+```
+
+```
+{
+   "selector": {
+      "stars": {
+         "$gt": 4
+      }
+   },
+   "fields": [
+      "name",
+      "city",
+      "state",
+      "stars"
+   ]
+}
+```
+
+```
+{
+   "selector": {
+      "stars": {
+         "$gt": 4
+      },
+      "review_count": {
+         "$gt": 100
+      }
+   },
+   "fields": [
+      "name",
+      "city",
+      "state",
+      "stars",
+      "review_count"
+   ]
+}
+```
+
+Can execute a Find via REST
+
+`POST` `http://localhost:5984/name_of_database/_find`
