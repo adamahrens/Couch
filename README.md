@@ -335,3 +335,75 @@ Concrete example
 Can execute a Find via REST
 
 `POST` `http://localhost:5984/name_of_database/_find`
+
+# Complex Queries
+
+$and / $or : [ array of other selectors]. $not, $all (must be run on an array)
+
+```
+{
+   "selector": {
+      "$and": [
+         {
+            "name": {
+               "$gt": null
+            }
+         },
+         {
+            "city": {
+               "$eq": "Las Vegas"
+            }
+         },
+         {
+            "state": {
+               "$ne": "NV"
+            }
+         }
+      ]
+   }
+}
+```
+
+Documents matching they are have a city equal to Las Vegas outside of Nevada or they're in Nevada but not Las Vegas
+```
+{
+   "selector": {
+      "$or": [
+         {
+            "$and": [
+               {
+                  "city": {
+                     "$eq": "Las Vegas"
+                  }
+               },
+               {
+                  "state": {
+                     "$ne": "NV"
+                  }
+               }
+            ]
+         },
+         {
+            "$and": [
+               {
+                  "city": {
+                     "$ne": "Las Vegas"
+                  }
+               },
+               {
+                  "state": {
+                     "$eq": "NV"
+                  }
+               }
+            ]
+         }
+      ]
+   },
+   "fields": [
+      "name",
+      "state",
+      "city",
+      "postal_code"
+   ]
+}
+```
