@@ -407,3 +407,29 @@ Documents matching they are have a city equal to Las Vegas outside of Nevada or 
    ]
 }
 ```
+
+# Replication
+
+* Used to update one database with changes from another
+* Triggered by documents or tasks in _replicator
+* Will copy and delete documents
+* All involved databases will then become synced
+* Tries resolving conflicts or choose one randomly
+* Mango queries can be used in the replication task
+
+# Replication via API
+
+Basic format. Target and Source are the only required fields. Can be Remote -> Local, Local -> Remote, etc
+
+```
+{
+ "_id" : "optional will be auto generated if not provided",
+ "source" : "http://user:password@server.com:3001/name_of_database",
+ "target" : "http://user:password@localhost.com:3001/name_of_database".
+ "create_target" : true // creates the database if it doesnt exist
+ "continuous" : true, //default false
+ "filter" : "mydocuments/myfilter"
+}
+```
+
+`PUT` `http://localhost:5984/_replicator/_id_to_use`
