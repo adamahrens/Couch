@@ -428,7 +428,8 @@ Basic format. Target and Source are the only required fields. Can be Remote -> L
  "target" : "http://user:password@localhost.com:3001/name_of_database".
  "create_target" : true // creates the database if it doesnt exist
  "continuous" : true, //default false
- "filter" : "mydocuments/myfilter"
+ "filter" : "mydocuments/myfilter",
+ "selector" : { "filter_by" : { "$eq" : "a" }}
 }
 ```
 
