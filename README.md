@@ -434,3 +434,17 @@ Basic format. Target and Source are the only required fields. Can be Remote -> L
 ```
 
 `PUT` `http://localhost:5984/_replicator/_id_to_use`
+
+# Clusters
+
+* Cluster - Group of connected computers that work together as if they're a single entity
+* Node - Single computer in the cluster
+* Shard - A partition of a database held in a separate node
+* Replicates - Copies of a document in separate shards
+* Quorum - Minimum number of agreement among nodes before Read/Write execution is considered successful
+
+Defaults 
+q = 8 (Number of shards to create)
+r = 2 (Read quorum)
+w = 2 (Write quorum)
+n = 3 (Number of replicates)
